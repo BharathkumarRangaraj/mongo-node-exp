@@ -8,6 +8,15 @@
 <body>
     <h1>MongoDb CRUD example1</h1>
     {{message}}
+    <br>
+    <form method="post" action="/store_book">
+    <label for="">Book Name:</label>
+    <input type="text" name="title" />
+     <label for="">Author:</label>
+    <input type="text" name="author" />
+    <input type="submit"/><br><br>
+
+    </form>
     <ul>
         {{#each employees}}
         <li>{{this.title}} - {{this.author}} </li>
