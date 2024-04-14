@@ -9,6 +9,19 @@
     <h1>MongoDb CRUD example1</h1>
     {{message}}
     <br>
+    {{#if edit_id}}
+    <h1>Update</h1>
+    <form method="post" action="/update_book/{{edit_id}}">
+    <label for="">Book Name:</label>
+    <input type="text" name="title" value={{edit_book.title}} />
+     <label for="">Author:</label>
+    <input type="text" name="author" value= {{edit_book.author}} />
+    <input type="submit"/><br><br>
+
+    </form>
+
+    {{else}}
+    <h1>Create</h1>
     <form method="post" action="/store_book">
     <label for="">Book Name:</label>
     <input type="text" name="title" />
@@ -17,9 +30,14 @@
     <input type="submit"/><br><br>
 
     </form>
+
+     <br>
+     {{/if}}
+    
+
     <ul>
-        {{#each employees}}
-        <li>{{this.title}} - {{this.author}} </li>
+        {{#each books}}
+        <li>{{this.title}} - {{this.author}} <a href="/?edit_id={{this._id}}" >edit</a> <a href="/?delete_id={{this._id}}" onclick="return confirm("are you sure?")">delete</a></li>
 
         {{/each}}
     </ul>
